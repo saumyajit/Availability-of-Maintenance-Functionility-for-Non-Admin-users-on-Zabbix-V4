@@ -9,8 +9,11 @@ Overwrite with the scripts in this project the frontend PHP scripts from your Za
 Example: if your frontend is located in /var/www/html/zabbix:
 
 /var/www/html/zabbix/maintenance.php
+
 /var/www/html/zabbix/include/menu.inc.php
+
 /var/www/html/zabbix/include/views/configuration.maintenance.edit.php
+
 /var/www/html/zabbix/include/classes/api/services/CMaintenance.php
 
 
