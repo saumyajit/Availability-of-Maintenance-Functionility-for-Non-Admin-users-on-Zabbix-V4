@@ -87,7 +87,7 @@ check_fields($fields);
 /*
  * Permissions
  */
-if (getRequest('groupid') && !isWritableHostGroups([getRequest('groupid')])) {
+if (getRequest('groupid') && !isReadableHostGroups([getRequest('groupid')])) {
 	access_deny();
 }
 if (isset($_REQUEST['maintenanceid'])) {
@@ -95,7 +95,7 @@ if (isset($_REQUEST['maintenanceid'])) {
 		'output' => API_OUTPUT_EXTEND,
 		'selectTimeperiods' => API_OUTPUT_EXTEND,
 		'selectTags' => API_OUTPUT_EXTEND,
-		'editable' => true,
+		'editable' => false,
 		'maintenanceids' => getRequest('maintenanceid'),
 	]);
 	if (empty($dbMaintenance)) {
@@ -355,7 +355,7 @@ elseif (isset($_REQUEST['edit_timeperiodid'])) {
 }
 
 $options = [
-	'groups' => ['editable' => 1],
+	'groups' => ['editable' => 0],
 	'groupid' => getRequest('groupid')
 ];
 $pageFilter = new CPageFilter($options);
@@ -396,14 +396,14 @@ if (!empty($data['form'])) {
 		$db_hosts = API::Host()->get([
 			'output' => ['hostid', 'name'],
 			'maintenanceids' => $data['maintenanceid'],
-			'editable' => true
+			'editable' => false
 		]);
 
 		// get groups
 		$db_groups = API::HostGroup()->get([
 			'output' => ['groupid', 'name'],
 			'maintenanceids' => $data['maintenanceid'],
-			'editable' => true
+			'editable' => false
 		]);
 
 		// tags
@@ -436,7 +436,7 @@ if (!empty($data['form'])) {
 			? API::Host()->get([
 				'output' => ['hostid', 'name'],
 				'hostids' => $hostids,
-				'editable' => true
+				'editable' => false
 			])
 			: [];
 
@@ -444,7 +444,7 @@ if (!empty($data['form'])) {
 			? API::HostGroup()->get([
 				'output' => ['groupid', 'name'],
 				'groupids' => $groupids,
-				'editable' => true
+				'editable' => false
 			])
 			: [];
 	}
@@ -499,7 +499,7 @@ else {
 		'search' => [
 			'name' => ($filter['name'] === '') ? null : $filter['name']
 		],
-		'editable' => true,
+		'editable' => false,
 		'sortfield' => $sortField,
 		'sortorder' => $sortOrder,
 		'limit' => $config['search_limit'] + 1

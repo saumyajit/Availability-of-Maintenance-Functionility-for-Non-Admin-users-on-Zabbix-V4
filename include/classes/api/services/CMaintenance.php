@@ -259,9 +259,9 @@ class CMaintenance extends CApiService {
 	 */
 	public function create(array $maintenances) {
 		$maintenances = zbx_toArray($maintenances);
-		if (self::$userData['type'] == USER_TYPE_ZABBIX_USER) {
-			self::exception(ZBX_API_ERROR_PERMISSIONS, _('No permissions to referred object or it does not exist!'));
-		}
+		#if (self::$userData['type'] == USER_TYPE_ZABBIX_USER) {
+		#	self::exception(ZBX_API_ERROR_PERMISSIONS, _('No permissions to referred object or it does not exist!'));
+		#}
 
 		$hostids = [];
 		$groupids = [];
@@ -282,7 +282,7 @@ class CMaintenance extends CApiService {
 		// hosts permissions
 		$options = [
 			'hostids' => $hostids,
-			'editable' => true,
+			'editable' => false,
 			'output' => ['hostid'],
 			'preservekeys' => true
 		];
@@ -295,7 +295,7 @@ class CMaintenance extends CApiService {
 		// groups permissions
 		$options = [
 			'groupids' => $groupids,
-			'editable' => true,
+			'editable' => false,
 			'output' => ['groupid'],
 			'preservekeys' => true
 		];
@@ -497,9 +497,9 @@ class CMaintenance extends CApiService {
 	 * @return array
 	 */
 	public function update(array $maintenances) {
-		if (self::$userData['type'] == USER_TYPE_ZABBIX_USER) {
-			self::exception(ZBX_API_ERROR_PERMISSIONS, _('You do not have permission to perform this operation.'));
-		}
+		#if (self::$userData['type'] == USER_TYPE_ZABBIX_USER) {
+		#	self::exception(ZBX_API_ERROR_PERMISSIONS, _('You do not have permission to perform this operation.'));
+		#}
 
 		$maintenances = zbx_toArray($maintenances);
 		$maintenanceids = zbx_objectValues($maintenances, 'maintenanceid');
@@ -527,7 +527,7 @@ class CMaintenance extends CApiService {
 			'selectGroups' => ['groupid'],
 			'selectHosts' => ['hostid'],
 			'selectTimeperiods' => API_OUTPUT_EXTEND,
-			'editable' => true,
+			'editable' => false,
 			'preservekeys' => true
 		]);
 
@@ -661,7 +661,7 @@ class CMaintenance extends CApiService {
 			$db_hosts = API::Host()->get([
 				'output' => [],
 				'hostids' => $hostids,
-				'editable' => true,
+				'editable' => false,
 				'preservekeys' => true
 			]);
 
@@ -679,7 +679,7 @@ class CMaintenance extends CApiService {
 			$db_groups = API::HostGroup()->get([
 				'output' => [],
 				'groupids' => $groupids,
-				'editable' => true,
+				'editable' => false,
 				'preservekeys' => true
 			]);
 
@@ -876,14 +876,14 @@ class CMaintenance extends CApiService {
 	 * @return array
 	 */
 	public function delete(array $maintenanceids) {
-		if (self::$userData['type'] == USER_TYPE_ZABBIX_USER) {
-			self::exception(ZBX_API_ERROR_PERMISSIONS, _('You do not have permission to perform this operation.'));
-		}
+		#if (self::$userData['type'] == USER_TYPE_ZABBIX_USER) {
+		#	self::exception(ZBX_API_ERROR_PERMISSIONS, _('You do not have permission to perform this operation.'));
+		#}
 
 		$maintenances = $this->get([
 			'output' => ['maintenanceid', 'name'],
 			'maintenanceids' => $maintenanceids,
-			'editable' => true,
+			'editable' => false,
 			'preservekeys' => true
 		]);
 

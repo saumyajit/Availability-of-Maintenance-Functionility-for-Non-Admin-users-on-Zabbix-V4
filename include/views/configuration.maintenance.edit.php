@@ -243,7 +243,7 @@ $hostsAndGroupsFormList = (new CFormList('hostsAndGroupsFormList'))
 					'srcfld1' => 'groupid',
 					'dstfrm' => $maintenanceForm->getName(),
 					'dstfld1' => 'groupids_',
-					'editable' => true
+					'editable' => false
 				]
 			]
 		]))->setWidth(ZBX_TEXTAREA_STANDARD_WIDTH)
@@ -259,7 +259,7 @@ $hostsAndGroupsFormList = (new CFormList('hostsAndGroupsFormList'))
 					'srcfld1' => 'hostid',
 					'dstfrm' => $maintenanceForm->getName(),
 					'dstfld1' => 'hostids_',
-					'editable' => true
+					'editable' => false
 				]
 			]
 		]))->setWidth(ZBX_TEXTAREA_STANDARD_WIDTH)
