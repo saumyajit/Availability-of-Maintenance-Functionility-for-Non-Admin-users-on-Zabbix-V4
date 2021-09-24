@@ -2,7 +2,7 @@
 
 With the changes applied to the PHP scripts in this project, any Zabbix user will have access to the maintenance menu and can create maintenance periods for the hosts and groups of hosts in which they have access.
 
-Tested on Zabbix 4.0.0.
+Tested on Zabbix 4.0.x LTS Version
 
 ## How to use
 
@@ -16,6 +16,7 @@ Example: if your frontend is located in /var/www/html/zabbix:
 /var/www/html/zabbix/include/views/configuration.maintenance.edit.php  
 /var/www/html/zabbix/include/classes/api/services/CMaintenance.php  
 ```
+
 
 ## Final Result
 
