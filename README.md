@@ -17,6 +17,16 @@ Example: if your frontend is located in /var/www/html/zabbix:
 /var/www/html/zabbix/include/classes/api/services/CMaintenance.php  
 ```
 
+or /usr/share/zabbix
+
+```
+/usr/share/zabbix/maintenance.php  
+/usr/share/zabbix/include/menu.inc.php  
+/usr/share/zabbix/include/views/configuration.maintenance.edit.php  
+/usr/share/zabbix/include/classes/api/services/CMaintenance.php 
+
+```
+
 
 ## Final Result
 
